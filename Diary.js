@@ -1,35 +1,40 @@
 class Diary {
-
-    #locked = true;
     #diaryEntries = [];
-
+    #lock;
+    constructor(lock = 0) {
+        this.#lock = lock;
+    }
     lock() {
-        this.#locked = true;
+        this.#lock.lock();
     }
     unlock() {
-        this.#locked = false;
+        this.#lock.unlock();
     }
     addEntry(input) {
         try {
-            if (this.#locked === true) {
+            if (this.#lock.getLockStatus() === true) {
                 throw new Error(`Diary is locked`)
             }
         }
         catch (error) {
             console.log(error.message);
         }
-        this.#diaryEntries.push(input);
+        if (this.#lock.getLockStatus() === false) {
+            this.#diaryEntries.push(input);
+        }
     }
     getEntries() {
         try {
-            if (this.#locked === true) {
+            if (this.#lock.getLockStatus() === true) {
                 throw new Error(`Diary is locked`)
             }
         }
         catch (error) {
             console.log(error.message);
         }
-        return this.#diaryEntries;
+        if (this.#lock.getLockStatus() === false) {
+            return this.#diaryEntries;
+        }
     }
 }
 

@@ -16,6 +16,8 @@ Pair programming task
 | ------- | ---------------------------- | ----------------- | ----------------- |
 | Diary   | #lock @Object                | addEntry(@String) | @Void             |
 |         | #diaryEntries @Array[@String]| getEntries()      | @Array[@String]   |
+|         |                              | lock()            | @Void             |
+|         |                              | unlock()          | @Void             |
 | keyLock | #locked @Boolean             | lock()            | @Void             |
 |         |                              | unlock()          | @Void             |
 |         |                              | getLockStatus()   | @Boolean          |
